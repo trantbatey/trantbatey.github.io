@@ -12,13 +12,17 @@
     top: 0;
 }
 
+main {
+    margin: 7.5em 1em 1em 1em;
+}
+
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    margin: 0 0 100px;
+    background-color: blueviolet;
 }
 
 .footer {
@@ -30,6 +34,8 @@ body {
     background-color: aqua;
     color: black;
     text-align: center;
+    border-color: black;
+    border-style: double;
 }
 
 .footer > .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
