@@ -1,0 +1,48 @@
+
+.header {
+    font-size: 5rem;
+    text-align: center;
+    background-color: aqua;
+    border-color: black;
+    border-style: double;
+    height: 1.5em;
+    width: 100%;
+    font-family: Liberation Serif;"Times New Roman";
+    position: fixed;
+    top: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 35px;
+    width: 100%;
+    background-color: aqua;
+    color: black;
+    text-align: center;
+}
+
+.footer > .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.footer > .navbar {min-height:32px !important}
+
+.btn-link.btn-anchor {
+    outline: none !important;
+    background:none!important;
+    color: rgba(0,0,0,.5);
+    font-size: 1rem;
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-right: 20px;
+    border: 0;
+    vertical-align: center;
+}
