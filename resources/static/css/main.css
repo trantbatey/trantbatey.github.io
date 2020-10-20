@@ -13,7 +13,7 @@
 }
 
 main {
-    margin: 7.5em 1em 1em 1em;
+    margin: 7.5em 0 0 0;
 }
 
 html {
@@ -22,7 +22,9 @@ html {
 }
 
 body {
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
+    /*background-color: #FFBF00;*/
+    background-color: #e6aeae;
 }
 
 .footer {
@@ -51,4 +53,27 @@ body {
     padding-right: 20px;
     border: 0;
     vertical-align: center;
+}
+
+.side-film-strip {
+    padding: 0;
+    margin: 0 0 35px 0;
+}
+
+.center-cell {
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    position: fixed;
+    left: 20%
+}
+
+.left-strip {
+    position: fixed;
+    left: 0;
+}
+
+.right-strip {
+    position: fixed;
+    right: 0;
 }
