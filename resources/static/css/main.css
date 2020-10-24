@@ -1,11 +1,15 @@
 
+element {
+    --header-height: 5em;
+}
+
 .header {
     font-size: 5rem;
     text-align: center;
     background-color: aqua;
     border-color: black;
     border-style: double;
-    height: 1.5em;
+    height: var(--header-height);
     width: 100%;
     font-family: Liberation Serif;"Times New Roman";
     position: fixed;
@@ -24,7 +28,8 @@ html {
 body {
     /*background-color: blueviolet;*/
     /*background-color: #FFBF00;*/
-    background-color: #e6aeae;
+    /*background-color: #e6aeae;*/
+    background-color: lightgray;
 }
 
 .footer {
@@ -60,20 +65,31 @@ body {
     margin: 0 0 35px 0;
 }
 
+.left-strip {
+    margin: 0;
+    padding: 0;
+    height: 100% - calc(100% - var(--header-height));
+    width: 20%;
+    display: inline-block;
+}
+
 .center-cell {
     padding: 0;
     margin: 0;
+    height: 100% - calc(100% - var(--header-height));
     width: 60%;
-    position: fixed;
-    left: 20%
-}
-
-.left-strip {
-    position: fixed;
-    left: 0;
+    display: inline-block;
 }
 
 .right-strip {
-    position: fixed;
-    right: 0;
+    padding: 0;
+    margin: 0;
+    height: 100% - calc(100% - var(--header-height));
+    width: 20%;
+    display: inline-block;
+}
+
+.credits-space {
+    padding: 0;
+    margin: 0;
 }
