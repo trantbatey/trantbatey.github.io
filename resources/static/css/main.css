@@ -19,6 +19,7 @@ element {
 
 main {
     margin: 7.5em 0 0 0;
+    padding: 0;
 }
 
 html {
@@ -103,6 +104,28 @@ body {
 .top-frame-div {
     position: absolute;
     top: 2.5%;
+    left: 19%;
+    width: 62%;
+    height: 26%;
+    background-image: url("../img/Headshot.jpg");
+    background-size: cover;
+    z-index: 100;
+}
+
+.mid-frame-div {
+    position: absolute;
+    top: 34.5%;
+    left: 19%;
+    width: 62%;
+    height: 26%;
+    background-image: url("../img/Headshot.jpg");
+    background-size: cover;
+    z-index: 100;
+}
+
+.bot-frame-div {
+    position: absolute;
+    top: 66.5%;
     left: 19%;
     width: 62%;
     height: 26%;
