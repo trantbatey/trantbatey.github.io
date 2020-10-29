@@ -21,5 +21,17 @@
             setCenterCellSize();
         }
 
+        // start background video on mouse down
+        let vidPlaying = false;
+        function scrollHandler(event) {
+            if (!vidPlaying) {
+                var vid = $('#vid01')[0];
+                console.log(vid);
+                vid.play();
+                vidPlaying = true;
+            }
+        }
+        window.addEventListener('mousedown', scrollHandler);
+
     });
 })();
