@@ -35,7 +35,12 @@ body {
     /*background-color: blueviolet;*/
     /*background-color: #FFBF00;*/
     /*background-color: #e6aeae;*/
-    background-color: #888;
+    /*background-color: #888;*/
+    background-image: url("../img/film-reel_02.png");
+}
+
+.blur {
+    backdrop-filter: blur(8px);
 }
 
 .footer {
@@ -131,4 +136,14 @@ body {
     background-image: url("../img/Headshot.jpg");
     background-size: cover;
     z-index: 100;
+}
+
+.video-div {
+    background-image: url("../img/Kings-Son.png");
+    background-size: cover;
+}
+
+.video-clip {
+    vertical-align: center;
+    opacity: 10%;
 }
