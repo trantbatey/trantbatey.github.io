@@ -14,6 +14,9 @@
             let width = div.width();
             let height = width * 0.85;
             div.css('height', height + "px");
+            height = $('#vid01').height();
+            div = $('#resume');
+            div.css('height', height);
         }
 
         setCenterCellSize();

@@ -15,6 +15,14 @@
                 document.querySelector("header").innerHTML = data;
             });
 
+        fetch("./resume.html")
+            .then(response => {
+                return response.text()
+            })
+            .then(data => {
+                document.querySelector("resume").innerHTML = data;
+            });
+
         // fetch("./footer.html")
         //     .then(response => {
         //         return response.text()
