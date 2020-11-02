@@ -9,6 +9,16 @@
     src: url("Precious.ttf") format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+@font-face {
+    font-family: 'Braciola MS';
+    src: url("Braciola MS.ttf") format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+    font-family: 'Harting Plain';
+    src: url("Harting Plain.ttf") format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
 :root {
     --header-height: 5rem;
 }
@@ -167,6 +177,58 @@ body {
 
 .prod-credit {
     font-family: international, "Times New Roman";
+    margin-top: 2em;
+}
+
+.credit-subtitle {
+    font-family: Precious, "Segoe Script";
+    font-size: 2em;
+    text-align: left;
+    padding-left: 25%;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.section-title {
+    text-align: center;
+    margin: 0;
+    font-family: "Arial", "Courier New";
+    font-weight: bold;
+}
+
+.left-credit {
+    width: 50%;
+    text-align: right;
+    margin: 0;
+    padding-right: 1%;
+    float: left;
+    font-family: "monospace", "Courier New";
+}
+
+.right-credit {
+    width: 50%;
+    text-align: left;
+    margin: 0;
+    padding-left: 1%;
+    float: right;
+    font-family: "Harting Plain", "Courier New";
+}
+
+ex {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+pr {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.summary {
+    width: 85%;
+    margin: 0.75em auto auto auto;
+    font-family: "Harting Plain", "Courier New";
 }
 
 .lowercase {
