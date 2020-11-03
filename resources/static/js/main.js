@@ -37,10 +37,25 @@
         window.addEventListener('mousedown', scrollHandler);
 
         // link to LinkedIn
-        function linkedIn(event) {
+        function linkedInLink(event) {
             window.open("https://www.linkedin.com/in/trantbatey/", "_blank");
         }
-        $('#linked-in').click(linkedIn);
+        $('#linked-in').click(linkedInLink);
+
+        // link to Github
+        function githubLink(event) {
+            window.open("https://github.com/trantbatey", "_blank");
+        }
+        $('#github').click(githubLink);
+
+        // link to email
+        // function emailLink(event) {
+        //     window.open("mailto:trantbatey@gmail.com", "_blank");
+        // }
+        // $('#my-email').click(emailLink);
+
+        // initialize popovers
+        $('[data-toggle="popover"]').popover();
 
     });
 })();
