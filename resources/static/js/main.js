@@ -36,5 +36,11 @@
         }
         window.addEventListener('mousedown', scrollHandler);
 
+        // link to LinkedIn
+        function linkedIn(event) {
+            window.open("https://www.linkedin.com/in/trantbatey/", "_blank");
+        }
+        $('#linked-in').click(linkedIn);
+
     });
 })();

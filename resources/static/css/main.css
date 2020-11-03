@@ -96,6 +96,7 @@ body {
     margin: 0;
     position: relative;
     z-index: 1000;
+    pointer-events: none;
 }
 
 .left-strip {
@@ -131,9 +132,13 @@ body {
     left: 19%;
     width: 62%;
     height: 26%;
+    background-color: white;
+    z-index: 100;
+}
+
+.headshot {
     background-image: url("../img/Headshot.jpg");
     background-size: cover;
-    z-index: 100;
 }
 
 .mid-frame-div {
@@ -142,9 +147,23 @@ body {
     left: 19%;
     width: 62%;
     height: 26%;
-    background-image: url("../img/Headshot.jpg");
-    background-size: cover;
+    background-color: white;
     z-index: 100;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    max-width: 75%;
+    max-height: 75%
+}
+.fill:hover {
+    transform: scale(1.2);
 }
 
 .bot-frame-div {
@@ -153,8 +172,7 @@ body {
     left: 19%;
     width: 62%;
     height: 26%;
-    background-image: url("../img/Headshot.jpg");
-    background-size: cover;
+    background-color: white;
     z-index: 100;
 }
 
