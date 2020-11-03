@@ -47,13 +47,6 @@
             window.open("https://github.com/trantbatey", "_blank");
         }
         $('#github').click(githubLink);
-
-        // link to email
-        // function emailLink(event) {
-        //     window.open("mailto:trantbatey@gmail.com", "_blank");
-        // }
-        // $('#my-email').click(emailLink);
-
         // initialize popovers
         $('[data-toggle="popover"]').popover();
 

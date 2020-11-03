@@ -20,7 +20,7 @@
 }
 
 :root {
-    --header-height: 5rem;
+    --header-height: 0rem;
 }
 
 .header {
