@@ -202,28 +202,42 @@ body {
     max-width: 75%;
     max-height: 75%;
 }
-.fill:hover {
-    transform: scale(1.2);
-}
 
-.banner {
+.upper-banner {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     height: 3em;
 }
-.banner img {
+.upper-banner img {
     flex-shrink: 0;
     max-width: 75%;
     max-height: 75%;
-    margin-right: 1em;
+    margin-left: 6%;
+    margin-right: 6%;
 }
+.upper-banner img:hover {
+    transform: scale(1.2);
+}
+
 .lower-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 3em;
     background-color: black;
     margin-bottom: 0;
     padding-top: 0;
     margin-top: 0;
+}
+.lower-banner img {
+    flex-shrink: 0;
+    max-width: 75%;
+    max-height: 75%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
 }
 
 .video-div {
