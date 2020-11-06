@@ -10,13 +10,10 @@
         function setCenterCellSize(event) {
 
             // This code is intended to keep the center box aspect ration the same.
-            let div = $('#main-cell');
-            let width = div.width();
-            let height = width * 0.85;
-            div.css('height', height + "px");
-            height = $('#vid01').height();
-            div = $('#resume');
-            div.css('height', height);
+            // let height = $('#vid01').height();
+            // let div = $('#resume');
+            // div.css('height', height);
+            // console.log("Height: " + height);
         }
 
         setCenterCellSize();
