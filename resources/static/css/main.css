@@ -53,10 +53,6 @@ html {
 }
 
 body {
-    /*background-color: blueviolet;*/
-    /*background-color: #FFBF00;*/
-    /*background-color: #e6aeae;*/
-    /*background-color: #888;*/
     background-image: url("../img/film-reel_02.png");
 }
 
@@ -243,8 +239,6 @@ body {
 }
 
 .video-div {
-    /*background-image: url("../img/Kings-Son.png");*/
-    /*background-size: cover;*/
     position: relative;
     border: 2px solid black;
     padding: 0;
@@ -270,7 +264,22 @@ body {
     display: block;
 }
 
+#start-prompt {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: aliceblue;
+    font-size: 2.0em;
+    font-family: international, "Times New Roman";
+    padding: 0;
+    margin: 0;
+}
+
 #resume {
+    visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;

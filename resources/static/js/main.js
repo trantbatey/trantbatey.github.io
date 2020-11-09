@@ -14,11 +14,12 @@
         let vid2;
         let scrollHeight;
         let frameNumber = 0; // start video at frame 0
-        let totalSeconds = 100; // 124 seconds at 30 fps
+        let totalSeconds = 90; // 124 seconds at 30 fps
 
         function scrollHandler(event) {
 
             // Use requestAnimationFrame for smooth playback
+            scrollHeight = res[0].scrollHeight - res.height();
             console.log("scrollHeight: " + scrollHeight);
             if (res.scrollTop() === 0) {
                 frameNumber = 1;
@@ -27,22 +28,25 @@
             }
             console.log("scrollPlay: " + res.scrollTop() + " totalSeconds: " + totalSeconds + " Frame#: " + frameNumber);
             vid2.currentTime = frameNumber;
-            window.requestAnimationFrame(scrollHandler);
         }
 
         function setScrollHandler() {
+
+            // show the resume
+            res = $('#resume');
+            res.css('visibility', 'visible');
+            let startPrompt = $('#start-prompt').css('display', 'none');
+
+            // start the film grain video
             let vid = $('#vid01')[0];
             console.log(vid);
             vid.play();
             vidPlaying = true;
             vid2 = $('#vid02')[0];
-            // console.log(vid);
-            // vid.play();
-            res = $('#resume');
-            scrollHeight = res[0].scrollHeight - res.height();
-            // res.scroll(scrollHandler);
+
+            // set shared variables
             window.removeEventListener('mousedown', setScrollHandler);
-            window.requestAnimationFrame(scrollHandler);
+            res.scroll(scrollHandler);
         }
         window.addEventListener('mousedown', setScrollHandler);
 
