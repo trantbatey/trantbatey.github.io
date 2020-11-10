@@ -15,6 +15,8 @@
         let scrollHeight;
         let frameNumber = 0; // start video at frame 0
         let totalSeconds = 90; // 124 seconds at 30 fps
+        let oldScrollTop = 0;
+        let step = 15;
 
         function scrollHandler(event) {
 
@@ -24,8 +26,11 @@
             if (res.scrollTop() === 0) {
                 frameNumber = 1;
             } else {
+                if (res[0].scrollTop - oldScrollTop > step) res[0].scrollTop = oldScrollTop + step;
+                else if (oldScrollTop - res[0].scrollTop > step ) res[0].scrollTop = oldScrollTop - step;
                 frameNumber = (res.scrollTop() / scrollHeight) * totalSeconds;
             }
+            oldScrollTop = res[0].scrollTop;
             console.log("scrollPlay: " + res.scrollTop() + " totalSeconds: " + totalSeconds + " Frame#: " + frameNumber);
             vid2.currentTime = frameNumber;
         }
