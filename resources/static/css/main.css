@@ -21,6 +21,8 @@
 
 :root {
     --header-height: 0rem;
+    --frame-background-color: #ffbf55; // amber
+    /*--frame-background-color: black;*/
 }
 
 .header {
@@ -134,7 +136,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-color: white;
+    background-color: var(--frame-background-color);
     z-index: 100;
 }
 
@@ -144,8 +146,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-image: url("../img/Headshot-02.jpg");
-    background-size: cover;
+    background-color: black;
     z-index: 100;
 }
 
@@ -155,7 +156,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-color: white;
+    background-color: black;
     z-index: 100;
 }
 
@@ -165,7 +166,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-color: white;
+    background-color: black;
     z-index: 100;
 }
 
@@ -175,7 +176,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-color: white;
+    background-color: black;
     z-index: 100;
 }
 
@@ -185,7 +186,7 @@ body {
     left: 19%;
     width: 62%;
     height: 13%;
-    background-color: white;
+    background-color: black;
     z-index: 100;
 }
 
@@ -195,10 +196,10 @@ body {
     align-items: center;
     overflow: hidden
 }
-.fill img {
+.fill video {
     flex-shrink: 0;
-    max-width: 75%;
-    max-height: 75%;
+    max-width: 85%;
+    max-height: 85%;
 }
 
 .upper-banner {
