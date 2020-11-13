@@ -19,40 +19,48 @@
         let oldScrollTop = 0;
         let step;
         let vidSBTimeLimit = 0;
+        let numFrames = 0;
+        let direction = 1;
         let scrollCount = 0;
 
         function scrollHandler(event) {
 
             console.log("scrollTop: " + res[0].scrollTop + " vidSBTimeLimit: " + vidSBTimeLimit);
+            // if end of page, play the rest of the clip
+            if (res.scrollTop() >= scrollHeight) {
+                vidSBTimeLimit = vidSB01.duration;
+                vidSB01.play(); // start player if it is stopped
+                console.log("Play the rest of the clip. vidSBTimeLimit: " + vidSBTimeLimit);
+            }
+
             if (vidSBTimeLimit != 0) return;
+            if(numFrames !== 0) {
+                vidSBTimeLimit = vidSB01.currentTime += ((1/30) * direction);
+                vidSB01.play();
+                numFrames--;
+                console.log("numFrames: " + numFrames + " vidSBTimeLimit: " + vidSBTimeLimit + "vidSB01.currentTime: " + vidSB01.currentTime);
+                return;
+            }
 
             // set step and direction
             step = res[0].scrollTop - oldScrollTop;
             scrollHeight = res[0].scrollHeight - res.height();
-            console.log("scrollHeight: " + scrollHeight);
-            console.log("scrollTop: " + res.scrollTop() + " oldScrollTop: " + oldScrollTop + " step: " + step);
             if (res[0].scrollTop === 0) {
                 frameNumber = 1;
                 vidSBTimeLimit = 0;
-                console.log("res.scrollTop() <= 0, frameNumber: " + frameNumber);
             } else {
-                if (res.scrollTop() >= scrollHeight - 300) res[0].scrollTop = scrollHeight - 400;
-                if (step > 0) frameNumber += (1/7);
-                else if (step < 0) frameNumber -= (1/7);
-                console.log("else, frameNumber: " + frameNumber);
+                if (step > 0) {
+                    direction = 1; // forward
+                }
+                else {
+                    direction = -1; // background
+                }
+                vidSBTimeLimit = vidSB01.currentTime += ((1/30) * direction);
+                numFrames = 15;
+                vidSB01.play();
             }
             oldScrollTop = res[0].scrollTop;
-            console.log("scrollTop: " + res.scrollTop() + " step: " + step + " Frame#: " + frameNumber);
-            vid2.currentTime = (frameNumber*7) / 30;
-            console.log("vidSBTimeLimit: " + vidSBTimeLimit);
-            // if (vidSBTimeLimit === 0) {
-                vidSB01.currentTime = frameNumber;
-                vidSBTimeLimit = vidSB01.currentTime + (1 / 7);
-                vidSB01.play();
-            // } else {
-            //     if (step > 0) vidSBTimeLimit += (1/7);
-            //     else if (step < 0) vidSBTimeLimit -= (1/7);
-            // }
+            vid2.currentTime = vid2.duration * (res[0].scrollTop/scrollHeight);
         }
 
         function setScrollHandler() {
@@ -69,9 +77,10 @@
             vidPlaying = true;
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
-            vidSB01.addEventListener("timeupdate", function(){
-                if(this.currentTime >= vidSBTimeLimit
-                    || this.duration >= vidSBTimeLimit) {
+            vidSB01.addEventListener("timeupdate", function () {
+                if (this.currentTime >= vidSBTimeLimit ||
+                    this.currentTime >= this.duration -0.5) {
+                    frameNumber = this.currentTime;
                     vidSBTimeLimit = 0;
                     this.pause();
                 }
@@ -81,6 +90,7 @@
             window.removeEventListener('mousedown', setScrollHandler);
             res.scroll(scrollHandler);
         }
+
         window.addEventListener('mousedown', setScrollHandler);
 
         // link to LinkedIn
