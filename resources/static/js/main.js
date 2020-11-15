@@ -6,61 +6,33 @@
 
         "use strict";
 
-        // define delay function
-        const delay = ms => new Promise(rs => setTimeout(rs, ms));
-
         // create shared variables
         let vidPlaying = false;
         let res;
         let vid2, vidSB01;
-        let scrollHeight;
-        let frameNumber = 0; // start video at frame 0
-        let maxFrame = 3720;
         let oldScrollTop = 0;
         let step;
-        let vidSBTimeLimit = 0;
-        let numFrames = 0;
-        let direction = 1;
-        let scrollCount = 0;
+        let targetTime;
 
         function scrollHandler(event) {
 
-            console.log("scrollTop: " + res[0].scrollTop + " vidSBTimeLimit: " + vidSBTimeLimit);
-            // if end of page, play the rest of the clip
-            if (res.scrollTop() >= scrollHeight) {
-                vidSBTimeLimit = vidSB01.duration;
-                vidSB01.play(); // start player if it is stopped
-                console.log("Play the rest of the clip. vidSBTimeLimit: " + vidSBTimeLimit);
-            }
-
-            if (vidSBTimeLimit != 0) return;
-            if(numFrames !== 0) {
-                vidSBTimeLimit = vidSB01.currentTime += ((1/30) * direction);
-                vidSB01.play();
-                numFrames--;
-                console.log("numFrames: " + numFrames + " vidSBTimeLimit: " + vidSBTimeLimit + "vidSB01.currentTime: " + vidSB01.currentTime);
-                return;
-            }
-
-            // set step and direction
-            step = res[0].scrollTop - oldScrollTop;
-            scrollHeight = res[0].scrollHeight - res.height();
-            if (res[0].scrollTop === 0) {
-                frameNumber = 1;
-                vidSBTimeLimit = 0;
+            // don't scroll screen if target time has not been reached.
+            // if ((res[0].scrollTop > oldScrollTop && vidSB01.currentTime < targetTime) ||
+            //     (res[0].scrollTop < oldScrollTop && vidSB01.currentTime > targetTime)){
+            //     res[0].scrollTop = oldScrollTop;
+            //     return;
+            // }
+            if (res[0].scrollTop - oldScrollTop > step) res[0].scrollTop = oldScrollTop + step;
+            else if (oldScrollTop - res[0].scrollTop > step) res[0].scrollTop = oldScrollTop - step;
+            vid2.currentTime = vid2.duration * (res[0].scrollTop / res[0].scrollHeight);
+            if (res[0].scrollTop >= oldScrollTop) {
+                targetTime = vidSB01.currentTime + (vidSB01.duration / (46 * 29.97));
+                vidSB01.play(); // only play forward
             } else {
-                if (step > 0) {
-                    direction = 1; // forward
-                }
-                else {
-                    direction = -1; // background
-                }
-                vidSBTimeLimit = vidSB01.currentTime += ((1/30) * direction);
-                numFrames = 15;
-                vidSB01.play();
+                targetTime = vidSB01.currentTime - (vidSB01.duration / (46 * 29.97));
+                vidSB01.currentTime = targetTime;
             }
             oldScrollTop = res[0].scrollTop;
-            vid2.currentTime = vid2.duration * (res[0].scrollTop/scrollHeight);
         }
 
         function setScrollHandler() {
@@ -77,14 +49,13 @@
             vidPlaying = true;
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
-            vidSB01.addEventListener("timeupdate", function () {
-                if (this.currentTime >= vidSBTimeLimit ||
-                    this.currentTime >= this.duration -0.5) {
-                    frameNumber = this.currentTime;
-                    vidSBTimeLimit = 0;
-                    this.pause();
-                }
-            });
+            vidSB01.currentTime = 0;
+            step = res[0].scrollHeight / 1500;
+            oldScrollTop = res[0].scrollTop;
+            targetTime = vidSB01.currentTime;
+            vidSB01.addEventListener('timeupdate', function () {
+                if (this.currentTime >= targetTime) this.pause();
+            })
 
             // set shared variables
             window.removeEventListener('mousedown', setScrollHandler);
