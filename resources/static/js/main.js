@@ -7,32 +7,26 @@
         "use strict";
 
         // create shared variables
-        let vidPlaying = false;
+        let frameNumber = 0; // start video at frame 0
+
+        // lower numbers = faster playback
+        let playbackConst = 500; // Set to 1000 to make the playback slower
+
+        // get page height from video duration
+        let setHeight = document.getElementById("resume");
+
         let res;
-        let vid2, vidSB01;
-        let oldScrollTop = 0;
-        let step;
-        let targetTime;
+        let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
 
         function scrollHandler(event) {
-
-            // don't scroll screen if target time has not been reached.
-            // if ((res[0].scrollTop > oldScrollTop && vidSB01.currentTime < targetTime) ||
-            //     (res[0].scrollTop < oldScrollTop && vidSB01.currentTime > targetTime)){
-            //     res[0].scrollTop = oldScrollTop;
-            //     return;
-            // }
-            if (res[0].scrollTop - oldScrollTop > step) res[0].scrollTop = oldScrollTop + step;
-            else if (oldScrollTop - res[0].scrollTop > step) res[0].scrollTop = oldScrollTop - step;
-            vid2.currentTime = vid2.duration * (res[0].scrollTop / res[0].scrollHeight);
-            if (res[0].scrollTop >= oldScrollTop) {
-                targetTime = vidSB01.currentTime + (vidSB01.duration / (46 * 29.97));
-                vidSB01.play(); // only play forward
-            } else {
-                targetTime = vidSB01.currentTime - (vidSB01.duration / (46 * 29.97));
-                vidSB01.currentTime = targetTime;
-            }
-            oldScrollTop = res[0].scrollTop;
+            let frameNumber = res[0].scrollTop / playbackConst;
+            vid2.currentTime = frameNumber;
+            vidSB01.currentTime = frameNumber;
+            vidSB02.currentTime = frameNumber + 1;
+            vidSB03.currentTime = frameNumber + 2;
+            vidSB04.currentTime = frameNumber + 3;
+            vidSB05.currentTime = frameNumber + 4;
+            vidSB06.currentTime = frameNumber + 5;
         }
 
         function setScrollHandler() {
@@ -40,22 +34,21 @@
             // show the resume
             res = $('#resume');
             res.css('visibility', 'visible');
-            let startPrompt = $('#start-prompt').css('display', 'none');
+            $('#start-prompt').css('display', 'none');
 
             // start the film grain video
             let vid = $('#vid01')[0];
             console.log(vid);
             vid.play();
-            vidPlaying = true;
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
-            vidSB01.currentTime = 0;
-            step = res[0].scrollHeight / 1500;
-            oldScrollTop = res[0].scrollTop;
-            targetTime = vidSB01.currentTime;
-            vidSB01.addEventListener('timeupdate', function () {
-                if (this.currentTime >= targetTime) this.pause();
-            })
+            vidSB02 = $('#vidSB02')[0];
+            vidSB03 = $('#vidSB03')[0];
+            vidSB04 = $('#vidSB04')[0];
+            vidSB05 = $('#vidSB05')[0];
+            vidSB06 = $('#vidSB06')[0];
+            let resumePadding = $('#test')[0];
+            resumePadding.style.paddingBottom = Math.floor(vidSB01.duration) * playbackConst + "px";
 
             // set shared variables
             window.removeEventListener('mousedown', setScrollHandler);
