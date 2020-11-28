@@ -19,14 +19,15 @@
         let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
 
         function scrollHandler(event) {
+            let backgroundFrame = res[0].scrollTop / (playbackConst * 1.5);
             let frameNumber = res[0].scrollTop / playbackConst;
-            vid2.currentTime = frameNumber;
+            vid2.currentTime = backgroundFrame;
             vidSB01.currentTime = frameNumber;
-            vidSB02.currentTime = frameNumber + 1;
-            vidSB03.currentTime = frameNumber + 2;
-            vidSB04.currentTime = frameNumber + 3;
-            vidSB05.currentTime = frameNumber + 4;
-            vidSB06.currentTime = frameNumber + 5;
+            vidSB02.currentTime = frameNumber + (1/15);
+            vidSB03.currentTime = frameNumber + (2/15);
+            vidSB04.currentTime = frameNumber + (3/15);
+            vidSB05.currentTime = frameNumber + (4/15);
+            vidSB06.currentTime = frameNumber + (5/15);
         }
 
         function setScrollHandler() {
@@ -38,8 +39,13 @@
 
             // start the film grain video
             let vid = $('#vid01')[0];
-            console.log(vid);
             vid.play();
+
+            // play audio
+            let audio = $('#audio01')[0];
+            audio.play();
+
+            // setu other videos
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
             vidSB02 = $('#vidSB02')[0];
@@ -47,8 +53,6 @@
             vidSB04 = $('#vidSB04')[0];
             vidSB05 = $('#vidSB05')[0];
             vidSB06 = $('#vidSB06')[0];
-            let resumePadding = $('#test')[0];
-            resumePadding.style.paddingBottom = Math.floor(vidSB01.duration) * playbackConst + "px";
 
             // set shared variables
             window.removeEventListener('mousedown', setScrollHandler);
