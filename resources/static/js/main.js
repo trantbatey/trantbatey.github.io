@@ -19,7 +19,7 @@
         let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
 
         function scrollHandler(event) {
-            let backgroundFrame = res[0].scrollTop / (playbackConst * 1.5);
+            let backgroundFrame = res[0].scrollTop / (playbackConst * 1.2);
             let frameNumber = res[0].scrollTop / playbackConst;
             vid2.currentTime = backgroundFrame;
             vidSB01.currentTime = frameNumber;
@@ -35,6 +35,8 @@
             // show the resume
             res = $('#resume');
             res.css('visibility', 'visible');
+            res.niceScroll( {scrollspeed: 15, smoothscroll: true, autohidemode: false});
+            $("div[id^='ascrail']").show();
             $('#start-prompt').css('display', 'none');
 
             // start the film grain video
