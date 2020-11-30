@@ -9,7 +9,7 @@
         // lower numbers = faster playback
         let playbackConst = 500; // Set to 1000 to make the playback slower
 
-        let res;
+        let res, audio, audioOn, speakerToggle;
         let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
 
         function scrollHandler(event) {
@@ -38,8 +38,11 @@
             vid.play();
 
             // play audio
-            let audio = $('#audio01')[0];
+            audio = $('#audio01')[0];
             audio.play();
+            audioOn = true;
+            speakerToggle = $('#speaker-toggle');
+            speakerToggle.click(toggleSpeaker)
 
             // setup other videos
             setupVideos();
@@ -58,6 +61,17 @@
             vidSB04 = $('#vidSB04')[0];
             vidSB05 = $('#vidSB05')[0];
             vidSB06 = $('#vidSB06')[0];
+        }
+
+        function toggleSpeaker(event) {
+            if (audioOn) {
+                audio.pause();
+                audioOn = false;
+            }
+            else {
+                audio.play();
+                audioOn = true;
+            }
         }
 
         window.addEventListener('mousedown', setScrollHandler);
