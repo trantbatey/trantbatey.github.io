@@ -6,14 +6,8 @@
 
         "use strict";
 
-        // create shared variables
-        let frameNumber = 0; // start video at frame 0
-
         // lower numbers = faster playback
         let playbackConst = 500; // Set to 1000 to make the playback slower
-
-        // get page height from video duration
-        let setHeight = document.getElementById("resume");
 
         let res;
         let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
@@ -23,11 +17,11 @@
             let frameNumber = res[0].scrollTop / playbackConst;
             vid2.currentTime = backgroundFrame;
             vidSB01.currentTime = frameNumber;
-            vidSB02.currentTime = frameNumber + (1/15);
-            vidSB03.currentTime = frameNumber + (2/15);
-            vidSB04.currentTime = frameNumber + (3/15);
-            vidSB05.currentTime = frameNumber + (4/15);
-            vidSB06.currentTime = frameNumber + (5/15);
+            vidSB02.currentTime = frameNumber + (1 / 15);
+            vidSB03.currentTime = frameNumber + (2 / 15);
+            vidSB04.currentTime = frameNumber + (3 / 15);
+            vidSB05.currentTime = frameNumber + (4 / 15);
+            vidSB06.currentTime = frameNumber + (5 / 15);
         }
 
         function setScrollHandler() {
@@ -35,7 +29,7 @@
             // show the resume
             res = $('#resume');
             res.css('visibility', 'visible');
-            res.niceScroll( {scrollspeed: 15, smoothscroll: true, autohidemode: false});
+            res.niceScroll({scrollspeed: 15, smoothscroll: true, autohidemode: false});
             $("div[id^='ascrail']").show();
             $('#start-prompt').css('display', 'none');
 
@@ -47,7 +41,16 @@
             let audio = $('#audio01')[0];
             audio.play();
 
-            // setu other videos
+            // setup other videos
+            setupVideos();
+
+            // set shared variables
+            window.removeEventListener('mousedown', setScrollHandler);
+            res.scroll(scrollHandler);
+        }
+
+        // setup or reset videos
+        function setupVideos() {
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
             vidSB02 = $('#vidSB02')[0];
@@ -55,10 +58,6 @@
             vidSB04 = $('#vidSB04')[0];
             vidSB05 = $('#vidSB05')[0];
             vidSB06 = $('#vidSB06')[0];
-
-            // set shared variables
-            window.removeEventListener('mousedown', setScrollHandler);
-            res.scroll(scrollHandler);
         }
 
         window.addEventListener('mousedown', setScrollHandler);

@@ -42,10 +42,11 @@
 #indexMain {
     margin: 0;
     padding: 0;
-    position: absolute;
+    position: relative;
     top: calc(var(--header-height));
     width: 100%;
-    height: calc(100% - var(--header-height) - 35px);
+    height: 55vw;
+    overflow: hidden;
 }
 
 html {
@@ -98,51 +99,38 @@ body {
     pointer-events: none;
 }
 
-.upper-strip {
+.side-bar {
     margin: 0;
     padding: 0;
-    /*height: 100%;*/
-    width: 15%;
+    width: 16.8vw;
     display: inline-block;
     position: relative;
-}
-
-.lower-strip {
-    padding: 0;
-    margin: 0;
-    /*height: 100%;*/
-    width: 15%;
-    display: inline-block;
-    position: relative;
+    overflow: hidden;
 }
 
 #main-cell {
     padding: 0;
     margin: 0;
     vertical-align: top;
-    width: 85%;
+    width: 81vw;
     display: inline-block;
     border: 4px solid black;
 }
 
-.headshot {
-    background-image: url("../img/Headshot-01.jpg");
-    background-size: cover;
-}
-
 .frame01 {
     position: absolute;
-    top: 1.5%;
-    left: 19%;
+    top: 2.0%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
+    background-color: black;
     z-index: 100;
 }
 
 .frame02 {
     position: absolute;
-    top: 18%;
-    left: 19%;
+    top: 18.5%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
     background-color: black;
@@ -152,7 +140,7 @@ body {
 .frame03 {
     position: absolute;
     top: 35%;
-    left: 19%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
     background-color: black;
@@ -161,8 +149,8 @@ body {
 
 .frame04 {
     position: absolute;
-    top: 52%;
-    left: 19%;
+    top: 51.5%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
     background-color: black;
@@ -172,7 +160,7 @@ body {
 .frame05 {
     position: absolute;
     top: 68.5%;
-    left: 19%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
     background-color: black;
@@ -182,7 +170,7 @@ body {
 .frame06 {
     position: absolute;
     top: 85%;
-    left: 19%;
+    left: 18.5%;
     width: 62%;
     height: 13%;
     background-color: black;
@@ -250,6 +238,7 @@ body {
     border: 2px solid black;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 .video-clip {
     vertical-align: center;
@@ -267,7 +256,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0%;
     display: block;
 }
 
@@ -370,4 +359,34 @@ pr {
     width: 100%;
     top: 33.3%;
 }
+
+/* adding mobile responsiveness */
+
+/* phone */
+@media screen and (max-width:600px) {
+
+    .phone {
+        visibility: visible;
+        overflow-y: hidden;
+    }
+
+    .non-phone {
+        display: none;
+    }
+}
+
+/* non-phone */
+@media screen and (min-width:601px) {
+
+    .phone {
+        display: none;
+    }
+
+    .non-phone {
+        visibility: visible;
+        overflow-y: hidden;
+    }
+
+}
+
 
