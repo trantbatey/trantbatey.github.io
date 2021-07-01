@@ -177,6 +177,17 @@ body {
     z-index: 100;
 }
 
+.frame-text {
+    visibility: hidden;
+    font-weight: bold;
+    position: absolute;
+    color: red;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .fill {
     display: flex;
     justify-content: center;
@@ -340,7 +351,7 @@ pr {
 }
 
 .summary {
-    width: 85%;
+    width: 75%;
     margin: 0.75em auto auto auto;
     font-family: "Harting Plain", "Courier New";
 }

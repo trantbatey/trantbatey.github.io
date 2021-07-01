@@ -9,19 +9,14 @@
         // lower numbers = faster playback
         let playbackConst = 500; // Set to 1000 to make the playback slower
 
-        let res, audio, audioOn, speakerToggle;
-        let vid2, vidSB01, vidSB02, vidSB03, vidSB04, vidSB05, vidSB06;
+        let res, audio, audioOn, speakerToggle, frameText;
+        let vid2, vidSB01;
 
         function scrollHandler(event) {
             let backgroundFrame = res[0].scrollTop / (playbackConst * 1.2);
             let frameNumber = res[0].scrollTop / playbackConst;
             vid2.currentTime = backgroundFrame;
             vidSB01.currentTime = frameNumber;
-            vidSB02.currentTime = frameNumber + (1 / 15);
-            vidSB03.currentTime = frameNumber + (2 / 15);
-            vidSB04.currentTime = frameNumber + (3 / 15);
-            vidSB05.currentTime = frameNumber + (4 / 15);
-            vidSB06.currentTime = frameNumber + (5 / 15);
         }
 
         function setScrollHandler() {
@@ -32,6 +27,10 @@
             res.niceScroll({scrollspeed: 15, smoothscroll: true, autohidemode: false});
             $("div[id^='ascrail']").show();
             $('#start-prompt').css('display', 'none');
+
+            // show frame text links
+            frameText = $('.frame-text')
+            frameText.css('visibility', 'visible');
 
             // start the film grain video
             let vid = $('#vid01')[0];
@@ -56,11 +55,6 @@
         function setupVideos() {
             vid2 = $('#vid02')[0];
             vidSB01 = $('#vidSB01')[0];
-            vidSB02 = $('#vidSB02')[0];
-            vidSB03 = $('#vidSB03')[0];
-            vidSB04 = $('#vidSB04')[0];
-            vidSB05 = $('#vidSB05')[0];
-            vidSB06 = $('#vidSB06')[0];
         }
 
         function toggleSpeaker(event) {
@@ -75,6 +69,12 @@
         }
 
         window.addEventListener('mousedown', setScrollHandler);
+        $('#frame02')[0].addEventListener('mousedown', scrollToBackground)
+        $('#frame-text02')[0].addEventListener('mousedown', scrollToBackground)
+        $('#frame03')[0].addEventListener('mousedown', scrollToExperience)
+        $('#frame-text03')[0].addEventListener('mousedown', scrollToExperience)
+        $('#frame04')[0].addEventListener('mousedown', scrollToEducation)
+        $('#frame-text04')[0].addEventListener('mousedown', scrollToEducation)
 
         // link to LinkedIn
         function linkedInLink(event) {
@@ -93,4 +93,19 @@
         $('[data-toggle="popover"]').popover();
 
     });
+
+    function scrollToBackground () {
+        $('#resume')[0].focus()
+        $('#background')[0].scrollIntoView(false)
+    }
+
+    function scrollToExperience () {
+        $('#resume')[0].focus()
+        $('#experience')[0].scrollIntoView(false)
+    }
+
+    function scrollToEducation () {
+        $('#resume')[0].focus()
+        $('#education')[0].scrollIntoView(false)
+    }
 })();
